@@ -1,38 +1,168 @@
-.App {
+html {
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f2f2f2;
+  font-family: 'Comfortaa', Helvetica Neue, Helvetica;
+  color: #2a2a2a;
+}
+
+ul, ol, li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.-offset {
+  margin-top: 1rem;
+}
+
+.-icon {
+  height: 1em;
+  width: 1em;
+  vertical-align: middle;
+  line-height: normal;
+}
+
+.layout {
+  position: relative;
+  margin: 2rem;
+  height: calc(100vh - 4rem);
+  width: calc(100vw - 4rem);
+  --hue: 0;
+  --sat: 0%;
+  --lum: 95%;
+
+  background-color: hsl(var(--hue), var(--sat), var(--lum));
+  /*background-image: linear-gradient(
+    rgba(0, 0, 0, 0.0),
+    rgba(0, 0, 0, 0.25)
+  );*/
+  background-size: 100vw 100vh;
+  transition: background-color 1s ease-in-out;
+}
+  .layout-header {
+    color: #ccc;
+  }
+    .layout-header > h1 {
+      font-size: 0.75em;
+      text-transform: lowercase;
+    }
+
+.layout-main {
+  margin-top: 2rem;
+}
+  .layout-section {
+    flex: 1;
+  }
+
+  .layout-summary {
+    position: fixed;
+    top: 5rem;
+    right: 6%;
+    z-index: 0;
+    opacity: 0.05;
+    text-align: center;
+  }
+
+    .summary img {
+      width: 25rem;
+      max-width: 80vw;
+    }
+
+  .daily {
+    margin-top: 4rem;
+  }
+    .daily-degs {
+      display: flex;
+    }
+      .deg-major {
+        margin-left: -0.4rem;
+        font-size: 10rem;
+      }
+      .deg-aside {
+        margin-left: 2rem;
+      }
+        .deg-minor {
+          border-bottom: 3px solid #fff;
+          font-size: 1.25em;
+          line-height: 3em;
+        }
+        .deg-conditions-icon img {
+          width: 3em;
+          opacity: 0.3;
+        }
+    .daily-hilo {
+      margin-top: 1.5rem;
+    }
+      .daily-hilo > li {}
+      .daily-hilo > li:not(:first-child) {
+        margin-top: 0.5em;
+      }
+        .daily-hilo > li > span {
+          display: inline-block;
+          width: 4em;
+        }
+        .daily-hilo > li > span:last-child {
+          padding-left: 2em;
+          border-left: 1px solid #ccc;
+        }
+
+  .weekly {
+    margin-top: 4rem;
+  }
+    .weekly-days {
+      display: flex;
+    }
+      .weekly-day {
+        border-top: 3px solid #fff;
+      }
+      .weekly-day:not(:first-child) {
+        margin-left: 3rem;
+      }
+        .weekly-day strong {
+          display: block;
+          padding: 1rem 0;
+          font-size: 1em;
+          text-transform: uppercase;
+        }
+        .weekly-day-temperature {
+          display: flex;
+        }
+        .weekly-day-temperature:not(:first-of-type) {
+          margin-top: 0.5em;
+        }
+          .weekly-day-temperature > span {
+            flex: 1;
+          }
+          .weekly-day-temperature .temperature {
+            margin-left: 1em;
+            text-align: right;
+          }
+
+  .layout-hourly {
+    margin-left: 2rem;
+    padding-left: 2rem;
+    border-left: 1px solid rgba(0, 0, 0, 0.2);
+  }
+    .hourly-item {
+
+    }
+      .hourly-item > span {
+        display: table-cell;
+        padding-top: 0.66em;
+        padding-right: 0.25em;
+        white-space: nowrap;
+      }
+
+.slider {
+  margin: 0 auto;
+  padding-top: 2rem;
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.slider > input {
+  width: 30rem;
 }
