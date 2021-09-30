@@ -29,9 +29,9 @@ ul, ol, li {
 
 .layout {
   position: relative;
-  margin: 2rem;
+  margin: 2rem auto;
   height: calc(100vh - 4rem);
-  width: calc(100vw - 4rem);
+  max-width: 30rem;
   --hue: 0;
   --sat: 0%;
   --lum: 95%;
@@ -45,7 +45,7 @@ ul, ol, li {
   transition: background-color 1s ease-in-out;
 }
   .layout-header {
-    color: #ccc;
+    color: #afafaf;
   }
     .layout-header > h1 {
       font-size: 0.75em;
@@ -53,8 +53,12 @@ ul, ol, li {
     }
 
 .layout-main {
-  margin-top: 2rem;
+  margin-top: 4rem;
 }
+  .layout-main h2 > {
+    margin: 0;
+  }
+
   .layout-section {
     flex: 1;
   }
@@ -74,7 +78,7 @@ ul, ol, li {
     }
 
   .daily {
-    margin-top: 4rem;
+    margin-top: 3rem;
   }
     .daily-degs {
       display: flex;
@@ -118,6 +122,8 @@ ul, ol, li {
       display: flex;
     }
       .weekly-day {
+        position: relative;
+        min-width: 7em;
         border-top: 3px solid #fff;
       }
       .weekly-day:not(:first-child) {
@@ -135,12 +141,40 @@ ul, ol, li {
         .weekly-day-temperature:not(:first-of-type) {
           margin-top: 0.5em;
         }
-          .weekly-day-temperature > span {
+          .weekly-day-temperature > span:first-child {
+            width: 2em;
+          }
+          .weekly-day-temperature > span:last-child {
             flex: 1;
+            margin-left: 0.5em;
           }
           .weekly-day-temperature .temperature {
             margin-left: 1em;
             text-align: right;
+          }
+
+          .weekly-day::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: -0;
+            width: 6px;
+            height: 3rem;
+            border-radius: 6px;
+            background-repeat: no-repeat;
+            background-size: 6px 3rem;
+            background-image: linear-gradient(to top, 
+              hsla(266,44%,37%,1) 0%,
+              hsla(225,41%,31%,1) 10%,
+              hsla(199,47%,46%,1) 50%,
+              hsla(50,58%,40%,1) 76%,
+              hsla(28,57%,40%,1) 90%,
+              hsla(5,67%,33%,1) 100%);
+            background-image: linear-gradient(to top, hsla(203,60%,60%,0.75) 0%,hsla(19,85%,53%,0.75) 100%);
+            opacity: 0.33;
+          }
+          .weekly-day:hover::after {
+            opacity: 1;
           }
 
   .layout-hourly {
