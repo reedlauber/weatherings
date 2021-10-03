@@ -9,7 +9,6 @@ import './App.css';
 import CurrentConditions from './components/current-conditions';
 import DailyHighLow from './components/daily-high-low';
 import Header from './components/header';
-import WeatherSummary from './components/summary';
 import WeeklyDays from './components/weekly-days';
 
 function App() {

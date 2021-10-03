@@ -182,9 +182,7 @@ ul, ol, li {
     padding-left: 2rem;
     border-left: 1px solid rgba(0, 0, 0, 0.2);
   }
-    .hourly-item {
 
-    }
       .hourly-item > span {
         display: table-cell;
         padding-top: 0.66em;
