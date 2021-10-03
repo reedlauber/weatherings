@@ -5,7 +5,9 @@ import type { OpenWeatherOneCallResult, Weather } from '../types';
 
 import { getRecentWeather, setRecentWeather } from './local';
 
-const BASE_PATH = 'https://api.openweathermap.org/data/2.5/onecall?lat=45.5234&lon=-122.6762&appid=5d0a638a3a0b4470c8b50413ff097f15';
+const BASE_PATH = 'https://api.openweathermap.org/data/2.5/onecall?lat=45.5234&lon=-122.6762';
+const WEATHER_API_URL = `${BASE_PATH}&appid=${process.env.REACT_APP_OPEN_WEATHER_API_KEY}`;
+const hasAPIKey = !!process.env.REACT_APP_OPEN_WEATHER_API_KEY;
 
 const DEFAULT_WEATHER: Weather = {
   days: [],
@@ -20,14 +22,19 @@ export const useWeather = (): [Weather, Error | null] => {
   const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
+
+    if (!hasAPIKey) {
+      setError(new Error('No API key is present'));
+      return;
+    }
+
     const recentWeather = getRecentWeather();
 
     if (recentWeather) {
       setData(recentWeather);
     } else {
-      const request = new Request(BASE_PATH);
+      const request = new Request(WEATHER_API_URL);
   
-      console.log('Queried for API data');
       fetch(request).then((response) => {
         response.json().then((json: OpenWeatherOneCallResult) => {
           const weather: Weather = {

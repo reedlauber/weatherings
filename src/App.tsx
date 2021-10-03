@@ -16,9 +16,7 @@ function App() {
 
   // const [coords, coordsError] = useGeoLocation();
 
-  const [weather] = useWeather();
-
-  console.log('useWeather', weather);
+  const [weather, weatherError] = useWeather();
 
   return (
     <div className="layout">
@@ -26,6 +24,10 @@ function App() {
 
       <main className="layout-main">
         <h2>Today is {format(now, 'EEEE, MMM do')}.</h2>
+
+        {!!weatherError && (
+          <div>{weatherError.message}</div>
+        )}
 
         <div className="daily">
           <CurrentConditions weather={weather} />
