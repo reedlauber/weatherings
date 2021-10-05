@@ -1,6 +1,6 @@
 import React from 'react';
 
-import * as temperature from '../lib/temperature';
+import * as temperature from 'lib/temperature';
 
 interface DailyHighLowProps {
   high: number;

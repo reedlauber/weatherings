@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 
-import type { Weather } from '../../types';
+import type { Weather } from 'types';
 
 import Day from './components/day';
 

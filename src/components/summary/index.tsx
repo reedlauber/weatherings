@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 
-import type { Weather, WeatherIcon } from '../../types';
+import type { Weather, WeatherIcon } from 'types';
 
 
 import {
@@ -13,7 +13,7 @@ import {
   MoonIcon,
   SnowflakeIcon,
   SunIcon,
-} from '../icons';
+} from 'components/icons';
 
 const weatherIcons: {
   [key in WeatherIcon]: string

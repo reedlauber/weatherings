@@ -1,8 +1,8 @@
 import React from 'react';
 
-import type { DayWeather } from '../../../../types';
+import type { DayWeather } from 'types';
 
-import Temperature from '../../../temperature';
+import Temperature from 'components/temperature';
 
 interface WeeklyDayProps {
   day: DayWeather;

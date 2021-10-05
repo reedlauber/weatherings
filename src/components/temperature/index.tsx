@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 
-import * as temperature from '../lib/temperature';
+import * as temperature from 'lib/temperature';
 
 interface TemperatureProps {
   format?: 'celcius' | 'fahrenheit';

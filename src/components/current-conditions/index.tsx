@@ -1,10 +1,10 @@
 import React from 'react';
 
-import type { Weather } from '../../types';
+import type { Weather } from 'types';
 
-import * as temperature from '../../lib/temperature';
+import * as temperature from 'lib/temperature';
 
-import ConditionsIcon from '../conditions-icon';
+import ConditionsIcon from 'components/conditions-icon';
 
 interface CurrentConditionsProps {
   weather: Weather;

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { add, format } from 'date-fns';
 
-import type { OpenWeatherOneCallResult, Weather } from '../types';
+import type { OpenWeatherOneCallResult, Weather } from 'types';
 
 import { getRecentWeather, setRecentWeather } from './local';
 

@@ -1,6 +1,6 @@
 import { add } from 'date-fns';
 
-import type { Weather } from '../types';
+import type { Weather } from 'types';
 
 interface StoredWeather {
   timestamp: number;
