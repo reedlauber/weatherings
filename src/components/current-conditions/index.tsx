@@ -23,7 +23,7 @@ const CurrentConditions = React.memo<CurrentConditionsProps>(({ weather }) => {
       <aside className="deg-aside">
         <span className="deg-minor">{fahrenheitTemp.toFixed(0)}&deg;f</span>
 
-        <div className="-offset deg-conditions-icon">
+        <div className="-offset deg-conditions-icon" title={weather.description}>
           <ConditionsIcon icon={weather.icon} />
         </div>
       </aside>
