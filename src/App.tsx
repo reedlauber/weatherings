@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { format } from 'date-fns';
 
-// import { useGeoLocation } from './lib/location';
+import { useGeoLocation } from './lib/location';
 import { useWeather } from './lib/open-weather';
 
 import './App.css';
@@ -9,14 +9,15 @@ import './App.css';
 import CurrentConditions from './components/current-conditions';
 import DailyHighLow from './components/daily-high-low';
 import Header from './components/header';
+import Notification from './components/notification';
 import WeeklyDays from './components/weekly-days';
 
 function App() {
   const [now] = useState(new Date());
 
-  // const [coords, coordsError] = useGeoLocation();
+  const [coords, coordsError] = useGeoLocation();
 
-  const [weather, weatherError] = useWeather();
+  const [weather, weatherError] = useWeather(coords);
 
   return (
     <div className="layout">
@@ -25,16 +26,24 @@ function App() {
       <main className="layout-main">
         <h2>Today is {format(now, 'EEEE, MMM do')}.</h2>
 
-        {!!weatherError && (
-          <div>{weatherError.message}</div>
+        {!!coordsError && (
+          <Notification message={coordsError.message} type="error" />
         )}
 
-        <div className="daily">
-          <CurrentConditions weather={weather} />
-          <DailyHighLow high={weather.high} loading={weather.loading} low={weather.low} />
-        </div>
+        {!!weatherError && (
+          <Notification message={weatherError.message} type="error" />
+        )}
 
-        <WeeklyDays weather={weather} />
+        {!coordsError && !weatherError && (
+          <>
+            <div className="daily">
+              <CurrentConditions weather={weather} />
+              <DailyHighLow high={weather.high} loading={weather.loading} low={weather.low} />
+            </div>
+
+            <WeeklyDays weather={weather} />
+          </>
+        )}
       </main>
     </div>
   );
