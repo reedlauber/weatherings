@@ -2,7 +2,6 @@ import React from 'react';
 
 import type { WeatherIcon } from 'types';
 
-
 import {
   CloudIcon,
   CloudFogIcon,
@@ -16,7 +15,7 @@ import {
 } from 'components/icons';
 
 const weatherIcons: {
-  [key in WeatherIcon]: string
+  [key in WeatherIcon]: React.FunctionComponent<React.SVGProps<SVGSVGElement>>
 } = {
   '01d': SunIcon,
   '01n': MoonIcon,
@@ -40,14 +39,15 @@ const weatherIcons: {
 
 interface ConditionsIconProps {
   icon?: WeatherIcon;
+  title?: string;
 }
 
-const ConditionsIcon = React.memo<ConditionsIconProps>(({ icon }) => {
-  const iconSrc = icon ? weatherIcons[icon] : '';
+const ConditionsIcon = React.memo<ConditionsIconProps>(({ icon, title }) => {
+  const Icon = icon ? weatherIcons[icon] : '';
 
-  if (iconSrc) {
+  if (Icon) {
     return (
-      <img src={iconSrc} alt="Weather icon" />
+      <span title={title}><Icon className="-icon" /></span>
     );
   }
 

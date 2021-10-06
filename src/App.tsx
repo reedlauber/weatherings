@@ -26,19 +26,23 @@ function App() {
       <main className="layout-main">
         <h2>Today is {format(now, 'EEEE, MMM do')}.</h2>
 
-        {!!coordsError && (
+        {weather.loading && (
+          <Notification message="Getting latest weather..." />
+        )}
+
+        {!weather.loading && !!coordsError && (
           <Notification message={coordsError.message} type="error" />
         )}
 
-        {!!weatherError && (
+        {!weather.loading && !!weatherError && (
           <Notification message={weatherError.message} type="error" />
         )}
 
-        {!coordsError && !weatherError && (
+        {!weather.loading && !coordsError && !weatherError && (
           <>
             <div className="daily">
               <CurrentConditions weather={weather} />
-              <DailyHighLow high={weather.high} loading={weather.loading} low={weather.low} />
+              <DailyHighLow weather={weather} />
             </div>
 
             <WeeklyDays weather={weather} />

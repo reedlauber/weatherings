@@ -93,7 +93,6 @@ export const useWeather = (coords: GeolocationCoordinates | null): [Weather, Err
   useEffect(() => {
     if (data) {
       timeout.current = setTimeout(() => {
-        console.log('Timer; reset to 0')
         setLastRequest(0);
       }, 1000 * 60 * 21);
     }

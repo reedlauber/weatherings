@@ -4,9 +4,10 @@
   --color-red: rgb(179, 32, 32);
   --color-yellow: rgb(194, 180, 117);
 
+  --color-border: #fff;
   --color-background: #f2f2f2;
   --color-title: #afafaf;
-  --color-border: #fff;
+  --color-icon: #6a6a6a;
 }
 
 html {
@@ -22,10 +23,11 @@ body {
 }
 
 body.--dark {
+  --color-border: #272727;
   --color-default: #eaeaea;
   --color-background: #333;
-  --color-border: #272727;
   --color-title: #6a6a6a;
+  --color-icon: #eaeaea;
 }
 
 ul, ol, li {
@@ -37,12 +39,16 @@ ul, ol, li {
 .-offset {
   margin-top: 1rem;
 }
+.-offset.--large {
+  margin-top: 1.5rem;
+}
 
 .-icon {
   height: 1em;
   width: 1em;
   vertical-align: middle;
   line-height: normal;
+  color: var(--color-icon);
 }
 
 .notification {
@@ -121,24 +127,29 @@ ul, ol, li {
           font-size: 1.25em;
           line-height: 3em;
         }
-        .deg-conditions-icon img {
-          width: 3em;
-          opacity: 0.3;
-        }
-    .daily-hilo {
-      margin-top: 1.5rem;
-    }
-      .daily-hilo > li:not(:first-child) {
-        margin-top: 0.5em;
+
+    .daily-hilo {}
+
+      .daily-hilo ul {
+        display: inline-block;
+        margin-right: 1rem;
+        vertical-align: middle;
       }
-        .daily-hilo > li > span {
-          display: inline-block;
-          width: 4em;
+        .daily-hilo li:not(:first-child) {
+          margin-top: 0.5em;
         }
-        .daily-hilo > li > span:last-child {
-          padding-left: 2em;
-          border-left: 1px solid #ccc;
-        }
+          .daily-hilo li > span {
+            display: inline-block;
+            width: 4em;
+          }
+          .daily-hilo li > span:last-child {
+            padding-left: 2em;
+            border-left: 1px solid #ccc;
+          }
+      .daily-hilo .-icon {
+        height: 2.5em;
+        width: 2.5em;
+      }
 
   .weekly {
     margin-top: 4rem;
