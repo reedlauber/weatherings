@@ -27,7 +27,7 @@ body.--dark {
   --color-default: #eaeaea;
   --color-background: #333;
   --color-title: #6a6a6a;
-  --color-icon: #eaeaea;
+  --color-icon: #c5c5c5;
 }
 
 ul, ol, li {
@@ -123,6 +123,7 @@ ul, ol, li {
         margin-left: 2rem;
       }
         .deg-minor {
+          padding-bottom: 0.25em;
           border-bottom: 3px solid var(--color-border);
           font-size: 1.25em;
           line-height: 3em;
@@ -225,6 +226,23 @@ ul, ol, li {
         padding-right: 0.25em;
         white-space: nowrap;
       }
+
+.theme-button {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+}
+
+  .theme-button-button {
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+    .theme-button svg {
+      height: 1.5em;
+      width: 1.5em;
+    }
 
 .slider {
   margin: 0 auto;

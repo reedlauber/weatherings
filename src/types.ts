@@ -101,3 +101,5 @@ export interface OpenWeatherOneCallResult {
     uvi?: number;
   }[]
 }
+
+export type ThemeMode = 'light' | 'dark';

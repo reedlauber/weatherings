@@ -10,6 +10,7 @@ import CurrentConditions from './components/current-conditions';
 import DailyHighLow from './components/daily-high-low';
 import Header from './components/header';
 import Notification from './components/notification';
+import ThemeButton from 'components/theme-button';
 import WeeklyDays from './components/weekly-days';
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
 
   return (
     <div className="layout">
+      <ThemeButton />
       <Header />
 
       <main className="layout-main">
