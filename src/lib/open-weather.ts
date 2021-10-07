@@ -12,6 +12,7 @@ const hasAPIKey = !!process.env.REACT_APP_OPEN_WEATHER_API_KEY;
 const DEFAULT_WEATHER: Weather = {
   days: [],
   high: 0,
+  lastUpdated: new Date(),
   loading: true,
   low: 0,
   currentTemp: 0,
@@ -26,6 +27,7 @@ export const getRemoteWeather = (coords: GeolocationCoordinates): Promise<Weathe
       response.json().then((json: OpenWeatherOneCallResult) => {
         const weather: Weather = {
           ...DEFAULT_WEATHER,
+          lastUpdated: new Date(),
           loading: false,
         };
   

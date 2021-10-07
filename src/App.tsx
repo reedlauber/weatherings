@@ -9,6 +9,7 @@ import './App.css';
 import CurrentConditions from './components/current-conditions';
 import DailyHighLow from './components/daily-high-low';
 import Header from './components/header';
+import LastUpdated from 'components/last-updated';
 import Notification from './components/notification';
 import ThemeButton from 'components/theme-button';
 import WeeklyDays from './components/weekly-days';
@@ -19,6 +20,8 @@ function App() {
   const [coords, coordsError] = useGeoLocation();
 
   const [weather, weatherError] = useWeather(coords);
+
+  console.log('weather', weather);
 
   return (
     <div className="layout">
@@ -44,6 +47,7 @@ function App() {
           <>
             <div className="daily">
               <CurrentConditions weather={weather} />
+              <LastUpdated weather={weather} />
               <DailyHighLow weather={weather} />
             </div>
 

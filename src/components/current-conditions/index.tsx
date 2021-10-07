@@ -4,8 +4,6 @@ import type { Weather } from 'types';
 
 import * as temperature from 'lib/temperature';
 
-import ConditionsIcon from 'components/conditions-icon';
-
 interface CurrentConditionsProps {
   weather: Weather;
 }

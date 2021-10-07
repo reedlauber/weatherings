@@ -151,6 +151,14 @@ ul, ol, li {
         height: 2.5em;
         width: 2.5em;
       }
+    
+  .last-updated {
+    font-size: 0.8em;
+    opacity: 0.3;
+  }
+  .last-updated:hover {
+    opacity: 0.8;
+  }
 
   .weekly {
     margin-top: 4rem;

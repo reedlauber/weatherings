@@ -29,6 +29,7 @@ export interface Weather {
   description?: string;
   high: number;
   icon?: WeatherIcon;
+  lastUpdated: Date;
   loading: boolean;
   low: number;
   currentTemp: number;
