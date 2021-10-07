@@ -11,6 +11,8 @@ const LastUpdated = React.memo<LastUpdatedProps>(({ weather }) => {
   const [formattedDate, setFormattedDate] = useState(formatDistanceToNow(weather.lastUpdated));
 
   useEffect(() => {
+    setFormattedDate(formatDistanceToNow(weather.lastUpdated));
+
     const interval = setInterval(() => {
       setFormattedDate(formatDistanceToNow(weather.lastUpdated));
     }, 1000 * 10);

@@ -1,18 +1,18 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { add, format } from 'date-fns';
 
 import type { OpenWeatherOneCallResult, Weather } from 'types';
 
 import { getRecentWeather, setRecentWeather } from './local';
 
-const BASE_PATH = 'https://api.openweathermap.org/data/2.5/onecall';
-const WEATHER_API_URL = `${BASE_PATH}?appid=${process.env.REACT_APP_OPEN_WEATHER_API_KEY}`;
+const BASE_PATH = 'https://api.openweathermap.org/data/2.5/onecall?exclude=minutely,hourly';
+const WEATHER_API_URL = `${BASE_PATH}&appid=${process.env.REACT_APP_OPEN_WEATHER_API_KEY}`;
 const hasAPIKey = !!process.env.REACT_APP_OPEN_WEATHER_API_KEY;
 
 const DEFAULT_WEATHER: Weather = {
   days: [],
   high: 0,
-  lastUpdated: new Date(),
+  lastUpdated: new Date().getTime(),
   loading: true,
   low: 0,
   currentTemp: 0,
@@ -27,7 +27,7 @@ export const getRemoteWeather = (coords: GeolocationCoordinates): Promise<Weathe
       response.json().then((json: OpenWeatherOneCallResult) => {
         const weather: Weather = {
           ...DEFAULT_WEATHER,
-          lastUpdated: new Date(),
+          lastUpdated: new Date().getTime(),
           loading: false,
         };
   
@@ -60,7 +60,6 @@ export const useWeather = (coords: GeolocationCoordinates | null): [Weather, Err
   const [data, setData] = useState<Weather>(DEFAULT_WEATHER);
   const [error, setError] = useState<Error | null>(null);
   const [lastRequest, setLastRequest] = useState<number>(0);
-  const timeout = useRef<NodeJS.Timeout>();
 
   useEffect(() => {
     if (!hasAPIKey) {
@@ -77,15 +76,11 @@ export const useWeather = (coords: GeolocationCoordinates | null): [Weather, Err
     if (recentWeather) {
       setData(recentWeather);
       setLastRequest(new Date().getTime());
-    } else {
-      if (!coords) {
-        return;
-      }
-  
+    } else if (coords) {
       getRemoteWeather(coords).then((weather) => {
         setRecentWeather(weather);
         setData(weather);
-        setLastRequest(new Date().getTime());
+        setLastRequest(weather.lastUpdated);
       }).catch((error) => {
         setError(error);
       });
@@ -93,14 +88,16 @@ export const useWeather = (coords: GeolocationCoordinates | null): [Weather, Err
   }, [coords, lastRequest]);
 
   useEffect(() => {
+    let timeout: NodeJS.Timeout;
+
     if (data) {
-      timeout.current = setTimeout(() => {
+      timeout = setTimeout(() => {
         setLastRequest(0);
-      }, 1000 * 60 * 21);
+      }, 1000 * 60);
     }
 
     return () => {
-      timeout.current && clearInterval(timeout.current);
+      timeout && clearTimeout(timeout);
     };
   }, [data]);
 

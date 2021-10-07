@@ -19,10 +19,9 @@ export const getRecentWeather = (): Weather | undefined => {
     } catch {}
 
     if (storedData) {
-      const recentDate = add(now, { minutes: -20 });
+      const recentDate = add(now, { minutes: -21 });
 
       if (storedData.timestamp > recentDate.getTime()) {
-        console.log('Returned cached weather');
         return storedData.weather;
       }
     }

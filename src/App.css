@@ -20,6 +20,7 @@ body {
   background-color: var(--color-background);
   font-family: 'Comfortaa', Helvetica Neue, Helvetica;
   color: var(--color-default);
+  transition: all 0.25s ease-in-out;
 }
 
 body.--dark {

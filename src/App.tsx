@@ -21,8 +21,6 @@ function App() {
 
   const [weather, weatherError] = useWeather(coords);
 
-  console.log('weather', weather);
-
   return (
     <div className="layout">
       <ThemeButton />
