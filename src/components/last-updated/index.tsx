@@ -7,14 +7,19 @@ interface LastUpdatedProps {
   weather: Weather;
 }
 
+const getFormattedDate = (weather: Weather): string => {
+  const date = weather.lastUpdated ? new Date(weather.lastUpdated) : new Date();
+  return formatDistanceToNow(date);
+};
+
 const LastUpdated = React.memo<LastUpdatedProps>(({ weather }) => {
-  const [formattedDate, setFormattedDate] = useState(formatDistanceToNow(weather.lastUpdated));
+  const [formattedDate, setFormattedDate] = useState('');
 
   useEffect(() => {
-    setFormattedDate(formatDistanceToNow(weather.lastUpdated));
+    setFormattedDate(getFormattedDate(weather));
 
     const interval = setInterval(() => {
-      setFormattedDate(formatDistanceToNow(weather.lastUpdated));
+      setFormattedDate(getFormattedDate(weather));
     }, 1000 * 10);
 
     return () => {
@@ -22,9 +27,13 @@ const LastUpdated = React.memo<LastUpdatedProps>(({ weather }) => {
     };
   }, [weather]);
 
-  return(
-    <div className="last-updated">as of {formattedDate} ago</div>
-  );
+  if (formattedDate) {
+    return (
+      <div className="last-updated">as of {formattedDate} ago</div>
+    );
+  }
+
+  return null;
 });
 
 export default LastUpdated;
