@@ -3,7 +3,7 @@ import { format } from 'date-fns';
 
 import { useGeoLocation } from './lib/location';
 import { useWeather } from './lib/open-weather';
-// import { useRequireSSL } from './lib/ssl';
+import { useRequireSSL } from './lib/ssl';
 
 import './App.css';
 
@@ -16,7 +16,7 @@ import ThemeButton from 'components/theme-button';
 import WeeklyDays from './components/weekly-days';
 
 function App() {
-  // useRequireSSL();
+  useRequireSSL();
   
   const [now] = useState(new Date());
 
