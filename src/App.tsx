@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { format } from 'date-fns';
 
 import { useGeoLocation } from './lib/location';
@@ -18,11 +18,15 @@ import WeeklyDays from './components/weekly-days';
 function App() {
   useRequireSSL();
   
-  const [now] = useState(new Date());
+  const [now, setNow] = useState(new Date());
 
   const [coords, coordsError] = useGeoLocation();
 
   const [weather, weatherError] = useWeather(coords);
+
+  useEffect(() => {
+    setNow(new Date());
+  }, [weather.lastUpdated]);
 
   return (
     <div className="layout">
