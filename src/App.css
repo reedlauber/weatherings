@@ -172,7 +172,7 @@ ul, ol, li {
       .weekly-day {
         position: relative;
         margin-bottom: 2rem;
-        padding-right: 0.7em;
+        /* padding-right: 0.7em; */
         min-width: 7em;
         border-top: 3px solid var(--color-border);
       }
@@ -212,6 +212,7 @@ ul, ol, li {
           }
 
           .weekly-day::after {
+            display: none;
             content: '';
             position: absolute;
             bottom: 0;
