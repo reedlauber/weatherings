@@ -43,6 +43,12 @@ ul, ol, li {
 .-offset.--large {
   margin-top: 2rem;
 }
+.-offset.--xlarge {
+  margin-top: 3rem;
+}
+.-offset.--huge {
+  margin-top: 4rem;
+}
 
 .-icon {
   height: 1em;
@@ -51,202 +57,6 @@ ul, ol, li {
   line-height: normal;
   color: var(--color-icon);
 }
-
-.notification {
-  font-size: 0.9rem;
-  padding: 1em;
-  border: 2px solid var(--color-grey);
-  border-radius: 0.5em;
-}
-
-.notification.--error {
-  color: var(--color-red);
-  border-color: var(--color-red);
-}
-
-.notification.--warning {
-  color: var(--color-yellow);
-  border-color: var(--color-yellow);
-}
-
-.layout {
-  position: relative;
-  margin: 2rem auto;
-  padding: 0 1.6rem;
-  height: calc(100vh - 4rem);
-  max-width: 40rem;
-  background-size: 100vw 100vh;
-  transition: background-color 1s ease-in-out;
-}
-  .layout-header {
-    color: var(--color-title);
-  }
-    .layout-header > h1 {
-      font-size: 0.75em;
-      text-transform: lowercase;
-    }
-
-.layout-main {
-  margin-top: 4rem;
-}
-  .layout-main h2 > {
-    margin: 0;
-  }
-
-  .layout-section {
-    flex: 1;
-  }
-
-  .layout-summary {
-    position: fixed;
-    top: 5rem;
-    right: 6%;
-    z-index: 0;
-    opacity: 0.05;
-    text-align: center;
-  }
-
-    .summary img {
-      width: 25rem;
-      max-width: 80vw;
-    }
-
-  .daily {
-    margin-top: 3rem;
-  }
-    .daily-degs {
-      display: flex;
-    }
-      .deg-major {
-        margin-left: -0.4rem;
-        font-size: 10rem;
-      }
-      .deg-aside {
-        margin-left: 2rem;
-      }
-        .deg-minor {
-          padding-bottom: 0.25em;
-          border-bottom: 3px solid var(--color-border);
-          font-size: 1.25em;
-          line-height: 3em;
-        }
-
-    .daily-hilo {}
-
-      .daily-hilo ul {
-        display: inline-block;
-        margin-right: 1rem;
-        vertical-align: middle;
-      }
-        .daily-hilo li:not(:first-child) {
-          margin-top: 0.5em;
-        }
-          .daily-hilo li > span {
-            display: inline-block;
-            width: 4em;
-          }
-          .daily-hilo li > span:last-child {
-            padding-left: 2em;
-            border-left: 1px solid #ccc;
-          }
-      .daily-hilo .-icon {
-        height: 2.5em;
-        width: 2.5em;
-      }
-    
-  .last-updated {
-    font-size: 0.8em;
-    opacity: 0.3;
-  }
-  .last-updated:hover {
-    opacity: 0.8;
-  }
-
-  .weekly {
-    margin-top: 4rem;
-  }
-    .weekly-days {
-      display: flex;
-      flex-wrap: wrap;
-    }
-      .weekly-day {
-        position: relative;
-        margin-bottom: 2rem;
-        /* padding-right: 0.7em; */
-        min-width: 7em;
-        border-top: 3px solid var(--color-border);
-      }
-      .weekly-day:not(:last-child) {
-        margin-right: 3rem;
-      }
-        .weekly-day strong {
-          display: block;
-          padding: 1rem 0;
-          font-size: 1em;
-          text-transform: uppercase;
-        }
-        .weekly-day-temperature {
-          display: flex;
-        }
-        .weekly-day-temperature:not(:first-of-type) {
-          margin-top: 0.5em;
-        }
-          .weekly-day-temperature > span:first-child {
-            width: 2em;
-          }
-          .weekly-day-temperature > span:last-child {
-            flex: 1;
-            margin-left: 0.5em;
-          }
-          .weekly-day-temperature .temperature {
-            margin-left: 1em;
-            text-align: right;
-          }
-
-          .weekly-day {
-            --pos-x: 0;
-            --pos-y: 0;
-            --bg-height: 100%;
-            --height: 5rem;
-            --width: 6px;
-          }
-
-          .weekly-day::after {
-            display: none;
-            content: '';
-            position: absolute;
-            bottom: 0;
-            right: -0;
-            width: var(--width);
-            height: var(--height);
-            border-radius: var(--width);
-            background-repeat: no-repeat;
-            background-size: var(--width) var(--bg-height);
-            background-position: var(--pos-x) var(--pos-y);
-            background-image: linear-gradient(to top, 
-              rgba(9,57,121,1) 0%,
-              rgba(53,194,207,1) 38%,
-              rgba(186,195,49,1) 60%,
-              rgba(224,172,52,1) 80%,
-              rgba(255,109,0,1) 100%);
-            opacity: 0.25;
-          }
-          .weekly-day:hover::after {
-            opacity: 1;
-          }
-
-  .layout-hourly {
-    margin-left: 2rem;
-    padding-left: 2rem;
-    border-left: 1px solid rgba(0, 0, 0, 0.2);
-  }
-
-      .hourly-item > span {
-        display: table-cell;
-        padding-top: 0.66em;
-        padding-right: 0.25em;
-        white-space: nowrap;
-      }
 
 .theme-button {
   position: fixed;
@@ -265,34 +75,21 @@ ul, ol, li {
       width: 1.5em;
     }
 
-.slider {
-  margin: 0 auto;
-  padding-top: 2rem;
-  text-align: center;
-}
-.slider > input {
-  width: 30rem;
-}
-
 @media (max-width: 480px) {
   body {
     font-size: 14px;
   }
 
-  .layout {
-    margin-top: 1.5rem;
-    margin-bottom: 1.5rem;
+  .-offset {
+    margin-top: 0.75rem;
   }
-
-  .layout-main, .daily, .weekly {
+  .-offset.--large {
+    margin-top: 1.25rem;
+  }
+  .-offset.--xlarge {
     margin-top: 2rem;
   }
-
-  .deg-major {
-    font-size: 8rem;
-  }
-
-  .weekly-day:not(:last-child) {
-    margin-right: 2rem;
+  .-offset.--huge {
+    margin-top: 3rem;
   }
 }

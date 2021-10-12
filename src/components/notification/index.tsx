@@ -1,5 +1,7 @@
 import React from 'react';
 
+import './index.css';
+
 interface NotificationProps {
   message: string;
   type?: 'default' | 'error' | 'warning';

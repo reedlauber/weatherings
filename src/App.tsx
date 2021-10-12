@@ -11,6 +11,7 @@ import CurrentConditions from './components/current-conditions';
 import DailyHighLow from './components/daily-high-low';
 import Header from './components/header';
 import LastUpdated from 'components/last-updated';
+import Layout, { LayoutMain } from './components/layout';
 import Notification from './components/notification';
 import ThemeButton from 'components/theme-button';
 import WeeklyDays from './components/weekly-days';
@@ -29,11 +30,11 @@ function App() {
   }, [weather.lastUpdated]);
 
   return (
-    <div className="layout">
+    <Layout>
       <ThemeButton />
       <Header />
 
-      <main className="layout-main">
+      <LayoutMain>
         <h2>Today is {format(now, 'EEEE, MMM do')}.</h2>
 
         {weather.loading && (
@@ -50,7 +51,7 @@ function App() {
 
         {!weather.loading && !coordsError && !weatherError && (
           <>
-            <div className="daily">
+            <div className="-offset --xlarge daily">
               <CurrentConditions weather={weather} />
               <LastUpdated weather={weather} />
               <DailyHighLow weather={weather} />
@@ -59,8 +60,8 @@ function App() {
             <WeeklyDays weather={weather} />
           </>
         )}
-      </main>
-    </div>
+      </LayoutMain>
+    </Layout>
   );
 }
 

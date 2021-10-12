@@ -1,0 +1,24 @@
+.daily-hilo {
+  font-size: 1rem;
+}
+
+  .daily-hilo ul {
+    display: inline-block;
+    margin-right: 1rem;
+    vertical-align: middle;
+  }
+    .daily-hilo li:not(:first-child) {
+      margin-top: 0.5em;
+    }
+      .daily-hilo li > span {
+        display: inline-block;
+        width: 4em;
+      }
+      .daily-hilo li > span:last-child {
+        padding-left: 2em;
+        border-left: 1px solid #ccc;
+      }
+  .daily-hilo .-icon {
+    height: 2.5em;
+    width: 2.5em;
+  }

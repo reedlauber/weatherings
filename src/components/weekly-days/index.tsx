@@ -4,6 +4,8 @@ import type { Weather } from 'types';
 
 import Day from './components/day';
 
+import './index.css';
+
 interface WeeklyDaysProps {
   weather: Weather;
 }
@@ -14,7 +16,7 @@ const WeeklyDays = React.memo<WeeklyDaysProps>(({ weather }) => {
   );
   
   return (
-    <div className="weekly">
+    <div className="-offset --huge weekly">
       <ul className="weekly-days">
         {days}
       </ul>

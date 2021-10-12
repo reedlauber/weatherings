@@ -10,7 +10,6 @@ interface WeeklyDayProps {
   day: DayWeather;
 }
 
-
 const KELVIN_MIN = toKelvin(-5);
 const KELVIN_MAX = toKelvin(115);
 const KELVIN_SIZE = Math.abs(KELVIN_MAX - KELVIN_MIN);

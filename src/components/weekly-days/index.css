@@ -1,0 +1,80 @@
+.weekly {
+  font-size: 1rem;
+}
+
+  .weekly-days {
+    display: flex;
+    flex-wrap: wrap;
+  }
+    .weekly-day {
+      position: relative;
+      margin-bottom: 2rem;
+      /* padding-right: 0.7em; */
+      min-width: 7em;
+      border-top: 3px solid var(--color-border);
+    }
+    .weekly-day:not(:last-child) {
+      margin-right: 3rem;
+    }
+      .weekly-day strong {
+        display: block;
+        padding: 1rem 0;
+        font-size: 1em;
+        text-transform: uppercase;
+      }
+      .weekly-day-temperature {
+        display: flex;
+      }
+      .weekly-day-temperature:not(:first-of-type) {
+        margin-top: 0.5em;
+      }
+        .weekly-day-temperature > span:first-child {
+          width: 2em;
+        }
+        .weekly-day-temperature > span:last-child {
+          flex: 1;
+          margin-left: 0.5em;
+        }
+        .weekly-day-temperature .temperature {
+          margin-left: 1em;
+          text-align: right;
+        }
+
+        .weekly-day {
+          --pos-x: 0;
+          --pos-y: 0;
+          --bg-height: 100%;
+          --height: 5rem;
+          --width: 6px;
+        }
+
+        .weekly-day::after {
+          display: none;
+          content: '';
+          position: absolute;
+          bottom: 0;
+          right: -0;
+          width: var(--width);
+          height: var(--height);
+          border-radius: var(--width);
+          background-repeat: no-repeat;
+          background-size: var(--width) var(--bg-height);
+          background-position: var(--pos-x) var(--pos-y);
+          background-image: linear-gradient(to top, 
+            rgba(9,57,121,1) 0%,
+            rgba(53,194,207,1) 38%,
+            rgba(186,195,49,1) 60%,
+            rgba(224,172,52,1) 80%,
+            rgba(255,109,0,1) 100%);
+          opacity: 0.25;
+        }
+        .weekly-day:hover::after {
+          opacity: 1;
+        }
+
+
+@media (max-width: 480px) {
+  .weekly-day:not(:last-child) {
+    margin-right: 2rem;
+  }
+}

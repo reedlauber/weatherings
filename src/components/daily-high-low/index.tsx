@@ -6,6 +6,8 @@ import * as temperature from 'lib/temperature';
 
 import ConditionsIcon from 'components/conditions-icon';
 
+import './index.css';
+
 interface DailyHighLowProps {
   weather: Weather;
 }

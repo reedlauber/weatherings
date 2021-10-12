@@ -1,0 +1,27 @@
+.daily {
+  font-size: 1rem;
+}
+
+  .daily-degs {
+    display: flex;
+  }
+    .deg-major {
+      margin-left: -0.4rem;
+      font-size: 10em;
+    }
+    .deg-aside {
+      margin-left: 2rem;
+    }
+      .deg-minor {
+        padding-bottom: 0.25em;
+        border-bottom: 3px solid var(--color-border);
+        font-size: 1.25em;
+        line-height: 3em;
+      }
+
+
+@media (max-width: 480px) {
+  .deg-major {
+    font-size: 8em;
+  }
+}

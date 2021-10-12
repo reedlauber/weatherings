@@ -3,6 +3,7 @@ import { formatDistanceToNow } from 'date-fns';
 
 import type { Weather } from 'types';
 
+import './index.css';
 interface LastUpdatedProps {
   weather: Weather;
 }

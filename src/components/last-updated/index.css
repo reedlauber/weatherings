@@ -1,0 +1,7 @@
+.last-updated {
+  font-size: 0.8em;
+  opacity: 0.3;
+}
+.last-updated:hover {
+  opacity: 0.8;
+}
