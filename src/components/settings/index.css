@@ -1,0 +1,41 @@
+.settings {
+  font-size: 1rem;
+  z-index: 10;
+}
+
+  .settings-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    z-index: 2;
+  }
+
+      .settings-toggle-button {
+        border: 0;
+        background-color: transparent;
+        cursor: pointer;
+      }
+
+        .settings-toggle-button svg {
+          height: 1.5em;
+          width: 1.5em;
+        }
+
+  .settings-panel {
+    --width: 360px;
+
+    position: fixed;
+    top: 0;
+    right: calc(var(--width) * -1 - 2rem);
+    bottom: 0;
+    z-index: 1;
+    padding: 1rem;
+    width: var(--width);
+    border-left: 1px solid var(--color-border);
+    background-color: var(--color-background);
+    transition: right 0.33s ease-in-out;
+  }
+  .settings-panel.--open {
+    right: 0;
+    box-shadow: -1px 0 6px rgba(0, 0, 0, 0.15);
+  }

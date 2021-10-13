@@ -13,7 +13,7 @@ import Header from './components/header';
 import LastUpdated from 'components/last-updated';
 import Layout, { LayoutMain } from './components/layout';
 import Notification from './components/notification';
-import ThemeButton from 'components/theme-button';
+import Settings from './components/settings';
 import WeeklyDays from './components/weekly-days';
 
 function App() {
@@ -31,7 +31,6 @@ function App() {
 
   return (
     <Layout>
-      <ThemeButton />
       <Header />
 
       <LayoutMain>
@@ -61,6 +60,8 @@ function App() {
           </>
         )}
       </LayoutMain>
+
+      <Settings />
     </Layout>
   );
 }

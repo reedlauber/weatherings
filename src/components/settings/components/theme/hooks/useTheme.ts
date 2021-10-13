@@ -1,10 +1,10 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import type { ThemeMode } from 'types';
 
 import { getTheme, setTheme } from 'lib/local';
 
-const useTheme = (): [ThemeMode, () => void] => {
+const useTheme = (): [ThemeMode, (mode: ThemeMode) => void] => {
   const [mode, setMode] = useState<ThemeMode>('light');
 
   useEffect(() => {
@@ -21,11 +21,7 @@ const useTheme = (): [ThemeMode, () => void] => {
     setTheme(mode);
   }, [mode]);
 
-  const handleToggle = useCallback(() => {
-    setMode(mode === 'light' ? 'dark' : 'light');
-  }, [mode]);
-
-  return [mode, handleToggle];
+  return [mode, setMode];
 };
 
 export default useTheme;
