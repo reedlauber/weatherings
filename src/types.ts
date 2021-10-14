@@ -24,10 +24,18 @@ export interface DayWeather {
   name: string;
 }
 
+export interface HourWeather {
+  description?: string;
+  icon?: WeatherIcon;
+  name: string;
+  temp: number;
+}
+
 export interface Weather {
   days: DayWeather[],
   description?: string;
   high: number;
+  hours: HourWeather[],
   icon?: WeatherIcon;
   lastUpdated: number;
   loading: boolean;
@@ -100,6 +108,28 @@ export interface OpenWeatherOneCallResult {
     pop?: number;
     rain?: number;
     uvi?: number;
+  }[]
+
+  hourly?: {
+    dt?: number;
+    temp?: number;
+    feels_like?: number;
+    pressure?: number;
+    humidity?: number;
+    dew_point?: number;
+    uvi?: number;
+    clouds?: number;
+    visibility?: number;
+    wind_speed?: number;
+    wind_deg?: number;
+    wind_gust?: number;
+
+    weather: {
+      id?: number;
+      main?: string;
+      description?: string;
+      icon?: WeatherIcon;
+    }[]
   }[]
 }
 

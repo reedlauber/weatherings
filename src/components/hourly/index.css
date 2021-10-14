@@ -1,0 +1,48 @@
+.hourly {
+  padding-bottom: 1em;
+  font-size: 1rem;
+  overflow: auto;
+}
+
+  .hourly-hours {
+    display: flex;
+  }
+
+    .hourly-hour {
+      margin-right: 2em;
+      padding: 0.5em 0.66em;
+      border-top: 3px solid var(--color-border);
+      border-radius: 0.5em;
+      background-color: rgba(0, 0, 0, 0.05);
+      transition: all 0.25s ease-in-out;
+    }
+    .--dark .hourly-hour {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+
+      .hourly-hour-time {
+        display: block;
+        margin-top: 0.5em;
+        text-transform: uppercase;
+      }
+
+      .hourly-hour-temp {
+        margin-top: 0.5em;
+        white-space: nowrap;
+      }
+
+        .hourly-hour-temp span {
+          display: inline-block;
+        }
+        .hourly-hour-temp span:not(:first-child) {
+          margin-left: 0.5em;
+          padding-left: 0.5em;
+          border-left: 1px solid var(--color-grey-700);
+        }
+
+      .hourly-hour-icon {
+        margin-top: 0.5em;
+      }
+      .hourly-hour-icon svg {
+        font-size: 1.5em;
+      }

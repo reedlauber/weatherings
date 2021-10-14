@@ -1,21 +1,45 @@
 import { useEffect, useState } from 'react';
 import { add, format } from 'date-fns';
 
-import type { OpenWeatherOneCallResult, Weather } from 'types';
+import type { DayWeather, HourWeather, OpenWeatherOneCallResult, Weather } from 'types';
 
 import { getRecentWeather, setRecentWeather } from './local';
 
-const BASE_PATH = 'https://api.openweathermap.org/data/2.5/onecall?exclude=minutely,hourly';
+const BASE_PATH = 'https://api.openweathermap.org/data/2.5/onecall?exclude=minutely';
 const WEATHER_API_URL = `${BASE_PATH}&appid=${process.env.REACT_APP_OPEN_WEATHER_API_KEY}`;
 const hasAPIKey = !!process.env.REACT_APP_OPEN_WEATHER_API_KEY;
 
 const DEFAULT_WEATHER: Weather = {
   days: [],
   high: 0,
+  hours: [],
   lastUpdated: new Date().getTime(),
   loading: true,
   low: 0,
   currentTemp: 0,
+};
+
+const getWeatherDays = (now: Date, json: OpenWeatherOneCallResult): DayWeather[] => {
+  return (json?.daily ?? []).map((day, i) => {
+    const date = add(now, { days: i });
+    return {
+      high: day?.temp?.max ?? 0,
+      low: day?.temp?.min ?? 0,
+      name: format(date, 'EEEE'),
+    };
+  });
+};
+
+const getWeatherHours = (now: Date, json: OpenWeatherOneCallResult): HourWeather[] => {
+  return (json?.hourly ?? []).map((hour, i) => {
+    const date = add(now, { hours: i });
+    return {
+      description: hour?.weather?.[0]?.description,
+      icon: hour?.weather?.[0]?.icon,
+      name: i === 0 ? 'Now' : format(date, 'haaa'),
+      temp: hour?.temp ?? 0,
+    }
+  });
 };
 
 export const getRemoteWeather = (coords: GeolocationCoordinates): Promise<Weather> => {
@@ -40,14 +64,8 @@ export const getRemoteWeather = (coords: GeolocationCoordinates): Promise<Weathe
   
         const now = new Date();
   
-        weather.days = (json?.daily ?? []).map((day, i) => {
-          const date = add(now, { days: i });
-          return {
-            high: day?.temp?.max ?? 0,
-            low: day?.temp?.min ?? 0,
-            name: format(date, 'EEEE'),
-          };
-        });
+        weather.days = getWeatherDays(now, json);
+        weather.hours = getWeatherHours(now, json);
   
         resolve(weather);
 

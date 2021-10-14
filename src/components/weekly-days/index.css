@@ -9,9 +9,9 @@
     .weekly-day {
       position: relative;
       margin-bottom: 2rem;
-      /* padding-right: 0.7em; */
       min-width: 7em;
       border-top: 3px solid var(--color-border);
+      transition: all 0.25s ease-in-out;
     }
     .weekly-day:not(:last-child) {
       margin-right: 3rem;

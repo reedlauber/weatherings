@@ -10,6 +10,7 @@ import './App.css';
 import CurrentConditions from './components/current-conditions';
 import DailyHighLow from './components/daily-high-low';
 import Header from './components/header';
+import Hourly from './components/hourly';
 import LastUpdated from 'components/last-updated';
 import Layout, { LayoutMain } from './components/layout';
 import Notification from './components/notification';
@@ -55,6 +56,8 @@ function App() {
               <LastUpdated weather={weather} />
               <DailyHighLow weather={weather} />
             </div>
+
+            <Hourly weather={weather} />
 
             <WeeklyDays weather={weather} />
           </>

@@ -17,6 +17,7 @@
         border-bottom: 3px solid var(--color-border);
         font-size: 1.25em;
         line-height: 3em;
+        transition: all 0.25s ease-in-out;
       }
 
 
