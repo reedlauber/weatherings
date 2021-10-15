@@ -9,7 +9,7 @@
   }
 
     .hourly-hour {
-      margin-right: 2em;
+      margin-right: 1.8em;
       padding: 0.5em 0.66em;
       border-top: 3px solid var(--color-border);
       border-radius: 0.5em;

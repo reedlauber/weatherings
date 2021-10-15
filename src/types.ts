@@ -1,3 +1,8 @@
+export interface Settings {
+  showHourly: boolean;
+  theme: ThemeMode;
+}
+
 export type WeatherIcon =
   | '01d' // Clear sky (day)
   | '01n' // Clear sky (night)

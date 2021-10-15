@@ -1,6 +1,6 @@
 import { add } from 'date-fns';
 
-import type { ThemeMode, Weather } from 'types';
+import type { Settings, ThemeMode, Weather } from 'types';
 
 interface StoredWeather {
   timestamp: number;
@@ -49,4 +49,27 @@ export const getTheme = (): ThemeMode => {
 
 export const setTheme = (mode: ThemeMode): void => {
   localStorage.setItem('themeMode', mode);
+};
+
+export const getSettings = (): Settings => {
+  const storedSettings = localStorage.getItem('settings');
+
+  let showHourly = false;
+  let theme: ThemeMode = 'light';
+
+  try {
+    const json = JSON.parse(storedSettings ?? '');
+    showHourly = json.showHourly ?? false;
+    theme = json.theme === 'light' || json.theme === 'dark' ? json.theme : 'light';
+  }
+  catch(e) {}
+
+  return {
+    showHourly,
+    theme,
+  };
+};
+
+export const setSettings = (settings: Settings) => {
+  localStorage.setItem('settings', JSON.stringify(settings));
 };

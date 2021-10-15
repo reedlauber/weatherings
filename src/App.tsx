@@ -7,6 +7,8 @@ import { useRequireSSL } from './lib/ssl';
 
 import './App.css';
 
+import useSavedSettings from './components/settings/hooks/useSavedSettings';
+
 import CurrentConditions from './components/current-conditions';
 import DailyHighLow from './components/daily-high-low';
 import Header from './components/header';
@@ -19,6 +21,8 @@ import WeeklyDays from './components/weekly-days';
 
 function App() {
   useRequireSSL();
+
+  const [settings, saveSettings] = useSavedSettings();
   
   const [now, setNow] = useState(new Date());
 
@@ -57,14 +61,14 @@ function App() {
               <DailyHighLow weather={weather} />
             </div>
 
-            <Hourly weather={weather} />
+            {settings.showHourly && <Hourly weather={weather} />}
 
             <WeeklyDays weather={weather} />
           </>
         )}
       </LayoutMain>
 
-      <Settings />
+      <Settings settings={settings} onSaveSettings={saveSettings} />
     </Layout>
   );
 }

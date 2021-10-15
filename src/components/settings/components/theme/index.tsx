@@ -1,20 +1,30 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useEffect } from 'react';
+
+import { ThemeMode } from 'types';
 
 import Button from 'components/button';
 
 import useTheme from './hooks/useTheme';
 
-const SettingsTheme = React.memo(() => {
-  const [mode, setMode] = useTheme();
+interface SettingsThemeProps {
+  onChange?: (theme: ThemeMode) => void;
+  theme: ThemeMode;
+}
+
+const SettingsTheme = React.memo<SettingsThemeProps>(({ onChange, theme }) => {
+  const [_, setMode] = useTheme();
+
+  useEffect(() => {
+    setMode(theme);
+  }, [theme, setMode]);
 
   const handleLightClick = useCallback(() => {
-    setMode('light');
-  }, [setMode]);
+    onChange?.('light');
+  }, [onChange]);
 
   const handleDarkClick = useCallback(() => {
-    console.log('click dark')
-    setMode('dark');
-  }, [setMode]);
+    onChange?.('dark');
+  }, [onChange]);
 
   return (
     <div className="settings-theme">
@@ -22,8 +32,8 @@ const SettingsTheme = React.memo(() => {
 
       <div className="-offset">
         <div className="button-group">
-          <Button isSelected={mode === 'light'} onClick={handleLightClick}>Light</Button>
-          <Button isSelected={mode === 'dark'} onClick={handleDarkClick}>Dark</Button>
+          <Button isSelected={theme === 'light'} onClick={handleLightClick}>Light</Button>
+          <Button isSelected={theme === 'dark'} onClick={handleDarkClick}>Dark</Button>
         </div>
       </div>
     </div>
