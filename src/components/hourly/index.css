@@ -10,14 +10,6 @@
 
     .hourly-hour {
       margin-right: 1.8em;
-      padding: 0.5em 0.66em;
-      border-top: 3px solid var(--color-border);
-      border-radius: 0.5em;
-      background-color: rgba(0, 0, 0, 0.05);
-      transition: all 0.25s ease-in-out;
-    }
-    .--dark .hourly-hour {
-      background-color: rgba(255, 255, 255, 0.05);
     }
 
       .hourly-hour-time {

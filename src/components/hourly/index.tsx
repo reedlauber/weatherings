@@ -5,6 +5,7 @@ import type { Weather } from 'types';
 import * as temperature from 'lib/temperature';
 
 import ConditionsIcon from 'components/conditions-icon';
+import TemperatureBox from 'components/temperature-box';
 
 import './index.css';
 
@@ -17,14 +18,16 @@ const Hourly = React.memo<HourlyProps>(({ weather }) => {
     return weather.hours.filter((hour, i) => i > 0 && i < 12).map((hour) => {
       return (
         <li className="hourly-hour">
-          <strong className="hourly-hour-time">{hour.name}</strong>
-          <div className="hourly-hour-temp">
-            <span>{temperature.toCelcius(hour.temp)?.toFixed(0)}&deg;c</span>
-            <span>{temperature.toFahrenheit(hour.temp)?.toFixed(0)}&deg;f</span>
-          </div>
-          <div className="hourly-hour-icon">
-            <ConditionsIcon icon={hour.icon} title={hour.description} />
-          </div>
+          <TemperatureBox>
+            <strong className="hourly-hour-time">{hour.name}</strong>
+            <div className="hourly-hour-temp">
+              <span>{temperature.toCelcius(hour.temp)?.toFixed(0)}&deg;c</span>
+              <span>{temperature.toFahrenheit(hour.temp)?.toFixed(0)}&deg;f</span>
+            </div>
+            <div className="hourly-hour-icon">
+              <ConditionsIcon icon={hour.icon} title={hour.description} />
+            </div>
+          </TemperatureBox>
         </li>
       );
     });

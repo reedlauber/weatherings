@@ -3,22 +3,18 @@
 }
 
   .weekly-days {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 2em;
+    row-gap: 2em;
   }
     .weekly-day {
       position: relative;
-      margin-bottom: 2rem;
       min-width: 7em;
-      border-top: 3px solid var(--color-border);
-      transition: all 0.25s ease-in-out;
-    }
-    .weekly-day:not(:last-child) {
-      margin-right: 3rem;
     }
       .weekly-day strong {
         display: block;
-        padding: 1rem 0;
+        padding: 0.5em 0 1.0em;
         font-size: 1em;
         text-transform: uppercase;
       }
@@ -73,8 +69,8 @@
         }
 
 
-@media (max-width: 480px) {
-  .weekly-day:not(:last-child) {
-    margin-right: 2rem;
+@media (max-width: 690px) {
+  .weekly-days {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

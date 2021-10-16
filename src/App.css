@@ -70,23 +70,6 @@ ul, ol, li {
   color: var(--color-icon);
 }
 
-.theme-button {
-  position: fixed;
-  top: 1rem;
-  right: 1rem;
-}
-
-  .theme-button-button {
-    border: 0;
-    background-color: transparent;
-    cursor: pointer;
-  }
-
-    .theme-button svg {
-      height: 1.5em;
-      width: 1.5em;
-    }
-
 @media (max-width: 480px) {
   body {
     font-size: 14px;

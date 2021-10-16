@@ -10,16 +10,16 @@
     z-index: 2;
   }
 
-      .settings-toggle-button {
-        border: 0;
-        background-color: transparent;
-        cursor: pointer;
-      }
+    .settings-toggle-button {
+      border: 0;
+      background-color: transparent;
+      cursor: pointer;
+    }
 
-        .settings-toggle-button svg {
-          height: 1.5em;
-          width: 1.5em;
-        }
+      .settings-toggle-button svg {
+        height: 1.5em;
+        width: 1.5em;
+      }
 
   .settings-panel {
     --width: 360px;
