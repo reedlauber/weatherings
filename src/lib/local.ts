@@ -1,11 +1,45 @@
 import { add } from 'date-fns';
 
-import type { Settings, ThemeMode, Weather } from 'types';
+import type { DayWeather, HourWeather, Settings, ThemeMode, Weather } from 'types';
 
 interface StoredWeather {
   timestamp: number;
   weather: Weather;
 }
+
+const getStoredWeather = (json: any): StoredWeather => {
+  const jsonWeather = json.weather ?? {};
+
+  const days: DayWeather[] = (jsonWeather.days ?? []).map((jsonDay: any) => ({
+    high: jsonDay.high ?? 0,
+    low: jsonDay.low ?? 0,
+    name: jsonDay.name ?? 0,
+  }));
+
+  const hours: HourWeather[] = (jsonWeather.hours ?? []).map((jsonHour: any) => ({
+    description: jsonHour.description,
+    icon: jsonHour.icon,
+    name: jsonHour.name ?? '',
+    temp: jsonHour.temp ?? 0,
+  }));
+
+  const weather: Weather = {
+    currentTemp: jsonWeather.currentTemp ?? 0,
+    days,
+    description: jsonWeather.description,
+    high: jsonWeather.high ?? 0,
+    hours,
+    icon: jsonWeather.icon,
+    lastUpdated: jsonWeather.lastUpdated ?? 0,
+    loading: jsonWeather.loading ?? false,
+    low: jsonWeather.low ?? 0,
+  };
+
+  return {
+    timestamp: json.timestamp ?? 0,
+    weather,
+  };
+};
 
 export const getRecentWeather = (): Weather | undefined => {
   const now = new Date();
@@ -15,7 +49,7 @@ export const getRecentWeather = (): Weather | undefined => {
     let storedData: StoredWeather | null = null;
 
     try {
-      storedData = JSON.parse(recentStored) as StoredWeather;
+      storedData = getStoredWeather(JSON.parse(recentStored));
     } catch {}
 
     if (storedData) {

@@ -37,6 +37,7 @@ export interface HourWeather {
 }
 
 export interface Weather {
+  currentTemp: number;
   days: DayWeather[],
   description?: string;
   high: number;
@@ -45,7 +46,6 @@ export interface Weather {
   lastUpdated: number;
   loading: boolean;
   low: number;
-  currentTemp: number;
 }
 
 export interface OpenWeatherOneCallResult {
