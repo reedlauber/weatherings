@@ -1,15 +1,13 @@
 import { useEffect, useState } from 'react';
 
-import type { ThemeMode } from 'types';
+import type { Settings, ThemeMode } from 'types';
 
-import { getTheme, setTheme } from 'lib/local';
-
-const useTheme = (): [ThemeMode, (mode: ThemeMode) => void] => {
-  const [mode, setMode] = useState<ThemeMode>('light');
+const useTheme = (settings: Settings): void => {
+  const [mode, setMode] = useState<ThemeMode>(settings.theme);
 
   useEffect(() => {
-    setMode(getTheme());
-  }, []);
+    setMode(settings.theme);
+  }, [settings]);
 
   useEffect(() => {
     const body = document.querySelector('body');
@@ -23,11 +21,7 @@ const useTheme = (): [ThemeMode, (mode: ThemeMode) => void] => {
         body.className = '';
       }
     }
-
-    setTheme(mode);
   }, [mode]);
-
-  return [mode, setMode];
 };
 
 export default useTheme;

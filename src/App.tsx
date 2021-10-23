@@ -7,7 +7,8 @@ import { useRequireSSL } from './lib/ssl';
 
 import './App.css';
 
-import useSavedSettings from './components/settings/hooks/useSavedSettings';
+import useSavedSettings from './hooks/useSavedSettings';
+import useTheme from './hooks/useTheme';
 
 import CurrentConditions from './components/current-conditions';
 import DailyHighLow from './components/daily-high-low';
@@ -23,6 +24,8 @@ function App() {
   useRequireSSL();
 
   const [settings, saveSettings] = useSavedSettings();
+
+  useTheme(settings);
   
   const [now, setNow] = useState(new Date());
 

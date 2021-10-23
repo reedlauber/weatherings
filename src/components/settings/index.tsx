@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 
 import { Settings, ThemeMode } from 'types';
 
@@ -15,7 +15,32 @@ interface SettingsProps {
 
 const SettingsPanel = React.memo<SettingsProps>(({ settings, onSaveSettings }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const isOpenRef = useRef(false);
 
+  // Hide the Settings panel when something else is clicked
+  const handleBodyClick = useCallback((event) => {
+    if (isOpenRef.current) {
+      setIsOpen(false);
+    }
+  }, []);
+
+  const handleSettingsClick = useCallback((event) => {
+    event.stopPropagation();
+  }, []);
+
+  useEffect(() => {
+    document.body.addEventListener('click', handleBodyClick);
+
+    return () => {
+      document.body.removeEventListener('click', handleBodyClick);
+    };
+  }, [handleBodyClick]);
+
+  useEffect(() => {
+    isOpenRef.current = isOpen;
+  }, [isOpen]);
+
+  // Button click handlers
   const handleClick = useCallback(() => {
     setIsOpen(!isOpen);
   }, [isOpen]);
@@ -31,7 +56,7 @@ const SettingsPanel = React.memo<SettingsProps>(({ settings, onSaveSettings }) =
   const panelClasses = isOpen ? ' --open' : '';
 
   return (
-    <aside className="settings">
+    <aside className="settings" onClick={handleSettingsClick}>
       <div className="settings-toggle">
         <Toggle isOpen={isOpen} onToggle={handleClick} />
       </div>

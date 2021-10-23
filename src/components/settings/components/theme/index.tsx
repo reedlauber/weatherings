@@ -1,10 +1,8 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useCallback } from 'react';
 
 import { ThemeMode } from 'types';
 
 import Button from 'components/button';
-
-import useTheme from './hooks/useTheme';
 
 interface SettingsThemeProps {
   onChange?: (theme: ThemeMode) => void;
@@ -12,12 +10,6 @@ interface SettingsThemeProps {
 }
 
 const SettingsTheme = React.memo<SettingsThemeProps>(({ onChange, theme }) => {
-  const [_, setMode] = useTheme();
-
-  useEffect(() => {
-    setMode(theme);
-  }, [theme, setMode]);
-
   const handleLightClick = useCallback(() => {
     onChange?.('light');
   }, [onChange]);
