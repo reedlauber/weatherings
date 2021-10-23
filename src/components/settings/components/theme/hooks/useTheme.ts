@@ -15,7 +15,13 @@ const useTheme = (): [ThemeMode, (mode: ThemeMode) => void] => {
     const body = document.querySelector('body');
 
     if (body) {
-      body.className = mode === 'dark' ? '--dark' : '';
+      if (mode === 'dark') {
+        body.className = '--dark';
+      } else if (mode === 'lcars') {
+        body.className = '--lcars';
+      } else {
+        body.className = '';
+      }
     }
 
     setTheme(mode);

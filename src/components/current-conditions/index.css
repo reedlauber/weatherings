@@ -20,6 +20,13 @@
         transition: all 0.25s ease-in-out;
       }
 
+.--lcars .deg-major {
+  font-weight: 400;
+}
+.--lcars .deg-minor {
+  line-height: 6em;
+  border: 0;
+}
 
 @media (max-width: 480px) {
   .deg-major {

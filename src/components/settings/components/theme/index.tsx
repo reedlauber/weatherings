@@ -26,6 +26,10 @@ const SettingsTheme = React.memo<SettingsThemeProps>(({ onChange, theme }) => {
     onChange?.('dark');
   }, [onChange]);
 
+  const handleLcarsClick = useCallback(() => {
+    onChange?.('lcars');
+  }, [onChange]);
+
   return (
     <div className="settings-theme">
       <h2>Theme</h2>
@@ -34,6 +38,7 @@ const SettingsTheme = React.memo<SettingsThemeProps>(({ onChange, theme }) => {
         <div className="button-group">
           <Button isSelected={theme === 'light'} onClick={handleLightClick}>Light</Button>
           <Button isSelected={theme === 'dark'} onClick={handleDarkClick}>Dark</Button>
+          <Button isSelected={theme === 'lcars'} onClick={handleLcarsClick}>LCARS</Button>
         </div>
       </div>
     </div>

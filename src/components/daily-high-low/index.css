@@ -22,3 +22,44 @@
     height: 2.5em;
     width: 2.5em;
   }
+
+.--lcars .daily-hilo {
+  position: absolute;
+  top: 8.8rem;
+  padding: 1rem 0.5em 4rem;
+  left: -14rem;
+  width: 10rem;
+  text-align: right;
+  border: solid var(--color-background);
+  border-width: 4px 0;
+  background-color: #fa0;
+  color: var(--color-background);
+}
+  .--lcars .daily-hilo ul {
+    display: block;
+    margin-right: 0;
+  }
+
+  .--lcars .daily-hilo li > span {
+    margin-right: 0.5em;
+    width: auto;
+  }
+  .--lcars .daily-hilo li > span:last-child {
+    padding-left: 0;
+    border-left: 0;
+  }
+  .--lcars .daily-hilo li > span:last-child::before {
+    content: '';
+    display: inline-block;
+    margin-right: 0.5em;
+    height: 0.25em;
+    width: 0.33em;
+    vertical-align: middle;
+    border-radius: 50%;
+    background-color: var(--color-background);
+  }
+  .--lcars .daily-hilo .-icon {
+    margin-top: 1em;
+    width: 2em;
+    color: var(--color-background);
+  }

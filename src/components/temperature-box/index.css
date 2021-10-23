@@ -6,3 +6,20 @@
   border-radius: 0.5em;
   transition: all 0.25s ease-in-out;
 }
+
+.--lcars .temp-box {
+  position: relative;
+  margin-top: 2em;
+  padding: 1.75em 1.25em 0.75em 4.5em;
+  background-color: #88ccff;
+  border: 0;
+  border-radius: 2.0em;
+  color: var(--color-background);
+}
+  .--lcars .temp-box > strong {
+    position: absolute;
+    bottom: calc(100% + 0.33em);
+    left: 1em;
+    border: 0;
+    color: #f5f6fa;
+  }

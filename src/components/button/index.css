@@ -24,13 +24,17 @@
   box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
 }
 
-.button-group .button:first-child {
+.button-group .button:first-child:not(:last-child) {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
-
 .button-group .button:not(:first-child) {
   margin-left: -1px;
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
+}
+
+.button-group .button:not(:last-child) {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }

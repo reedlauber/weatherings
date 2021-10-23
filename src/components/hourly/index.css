@@ -35,6 +35,30 @@
       .hourly-hour-icon {
         margin-top: 0.5em;
       }
-      .hourly-hour-icon svg {
-        font-size: 1.5em;
-      }
+        .hourly-hour-icon svg {
+          font-size: 1.5em;
+        }
+
+
+.--lcars .hourly-hour {
+  margin-right: 1.25em;
+}
+  .--lcars .temp-box span {
+    font-size: 1.5em;
+  }
+  .--lcars .hourly-hour-temp {
+    margin-top: 0;
+  }
+  .--lcars .hourly-hour-temp span:not(:first-child) {
+    margin-left: 0.25em;
+  }
+
+.--lcars .temp-box > .hourly-hour-icon {
+  position: absolute;
+  bottom: calc(100% + 0.33em);
+  right: 1em;
+  color: #f5f6fa;
+}
+  .--lcars .temp-box > .hourly-hour-icon svg {
+    font-size: 0.8em;
+  }

@@ -1,5 +1,7 @@
 .layout {
   position: relative;
+  display: flex;
+  flex-direction: column;
   margin: 2rem auto;
   padding: 0 1.6rem;
   height: calc(100vh - 4rem);
@@ -16,16 +18,85 @@
     }
 
 .layout-main {
+  flex: 1;
   font-size: 1rem;
 }
 
-  .layout-main h2 > {
+  .layout-main > h2 {
     margin: 0;
   }
 
   .layout-section {
     flex: 1;
   }
+
+.--lcars .layout {
+  margin-top: 0;
+  margin-bottom: 0;
+  height: 100vh;
+  max-width: 56rem;
+}
+
+  .--lcars .layout-header {
+    background-color: #ddbbff;
+    padding: 0.5rem 2rem 4rem;
+    border-radius: 0px 0 0 5rem;
+    position: relative;
+  }
+    .--lcars .layout-header::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 5.25rem;
+      background-color: var(--color-background);
+      width: calc(100% - 10em);
+      border-radius: 0 0 0 2rem;
+    }
+    .--lcars .layout-header > h1 {
+      position: relative;
+      left: 3rem;
+    }
+
+  .--lcars .layout-main {
+    position: relative;
+    margin-top: 0.5em;
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+    padding-left: 14rem;
+    border-radius: 5rem 0 0 0;
+    background-color: #ffaa90;
+  }
+    .--lcars .layout-main::before {
+      content: '';
+      position: absolute;
+      top: 1.25rem;
+      left: 10rem;
+      width: calc(100% - 10rem);
+      height: calc(100% - 1.25rem);
+      background-color: var(--color-background);
+      border-radius: 2rem 0 0 0;
+    }
+    .--lcars .layout-main > h2 {
+      position: absolute;
+      top: 5rem;
+      left: 0;
+      margin: 0;
+      padding: 1rem 0.5em 4rem;
+      width: 10rem;
+      font-size: 1em;
+      text-align: right;
+      border: solid var(--color-background);
+      border-width: 4px 0;
+      background-color: #ff7700;
+      color: var(--color-background);
+    }
+    .--lcars .layout-main > div {
+      position: relative;
+    }
+    .--lcars .layout-main > div:first-of-type {
+      margin-top: 0;
+    }
 
 
 @media (max-width: 480px) {

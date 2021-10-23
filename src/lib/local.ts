@@ -94,7 +94,7 @@ export const getSettings = (): Settings => {
   try {
     const json = JSON.parse(storedSettings ?? '');
     showHourly = json.showHourly ?? false;
-    theme = json.theme === 'light' || json.theme === 'dark' ? json.theme : 'light';
+    theme = ['dark', 'lcars', 'light'].includes(json.theme) ? json.theme : 'light';
   }
   catch(e) {}
 
