@@ -1,27 +1,29 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
-import type { Settings, ThemeMode } from 'types';
+import type { Settings, Weather } from 'types';
 
-const useTheme = (settings: Settings): void => {
-  const [mode, setMode] = useState<ThemeMode>(settings.theme);
-
-  useEffect(() => {
-    setMode(settings.theme);
-  }, [settings]);
-
+const useTheme = (settings: Settings, weather: Weather): void => {
   useEffect(() => {
     const body = document.querySelector('body');
 
     if (body) {
-      if (mode === 'dark') {
+      if (settings.theme === 'auto') {
+        const now = new Date().getTime();
+
+        if (now < weather.sunrise || now > weather.sunset) {
+          body.className = '--dark';
+        } else {
+          body.className = '';
+        }
+      } else if (settings.theme === 'dark') {
         body.className = '--dark';
-      } else if (mode === 'lcars') {
+      } else if (settings.theme === 'lcars') {
         body.className = '--lcars';
       } else {
         body.className = '';
       }
     }
-  }, [mode]);
+  }, [settings.theme, weather]);
 };
 
 export default useTheme;

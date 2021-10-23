@@ -33,6 +33,8 @@ const getStoredWeather = (json: any): StoredWeather => {
     lastUpdated: jsonWeather.lastUpdated ?? 0,
     loading: jsonWeather.loading ?? false,
     low: jsonWeather.low ?? 0,
+    sunrise: jsonWeather.sunrise ?? 0,
+    sunset: jsonWeather.sunset ?? 0,
   };
 
   return {
@@ -94,7 +96,7 @@ export const getSettings = (): Settings => {
   try {
     const json = JSON.parse(storedSettings ?? '');
     showHourly = json.showHourly ?? false;
-    theme = ['dark', 'lcars', 'light'].includes(json.theme) ? json.theme : 'light';
+    theme = ['auto', 'dark', 'lcars', 'light'].includes(json.theme) ? json.theme : 'light';
   }
   catch(e) {}
 

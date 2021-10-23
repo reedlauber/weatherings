@@ -46,6 +46,8 @@ export interface Weather {
   lastUpdated: number;
   loading: boolean;
   low: number;
+  sunrise: number;
+  sunset: number;
 }
 
 export interface OpenWeatherOneCallResult {
@@ -138,4 +140,4 @@ export interface OpenWeatherOneCallResult {
   }[]
 }
 
-export type ThemeMode = 'lcars' | 'light' | 'dark';
+export type ThemeMode = 'auto' | 'lcars' | 'light' | 'dark';

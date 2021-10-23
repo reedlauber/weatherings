@@ -39,3 +39,16 @@
     right: 0;
     box-shadow: -1px 0 6px rgba(0, 0, 0, 0.15);
   }
+
+  .settings-theme-field {
+    position: relative;
+  }
+
+    .settings-theme-hint {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      margin-top: 1em;
+      font-size: 0.8em;
+    }
+  

@@ -4,7 +4,7 @@
 
   .daily-hilo ul {
     display: inline-block;
-    margin-right: 1rem;
+    margin-right: 4rem;
     vertical-align: middle;
   }
     .daily-hilo li:not(:first-child) {

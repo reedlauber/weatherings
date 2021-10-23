@@ -1,37 +1,71 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, useMemo, useState } from 'react';
 
 import { ThemeMode } from 'types';
 
-import Button from 'components/button';
+import Button from './components/button';
 
 interface SettingsThemeProps {
   onChange?: (theme: ThemeMode) => void;
   theme: ThemeMode;
 }
 
+const BUTTONS: {
+  hint: string;
+  theme: ThemeMode;
+  text: string;
+}[] = [
+  { theme: 'auto', text: 'Auto', hint: 'Light during the day, dark at night' },
+  { theme: 'light', text: 'Light', hint: 'Light' },
+  { theme: 'dark', text: 'Dark', hint: 'Dark' },
+  { theme: 'lcars', text: 'LCARS', hint: 'Make it so' },
+];
+
 const SettingsTheme = React.memo<SettingsThemeProps>(({ onChange, theme }) => {
-  const handleLightClick = useCallback(() => {
-    onChange?.('light');
+  const [hoveringTheme, setHoveringTheme] = useState<ThemeMode | null>(null);
+
+  const handleClick = useCallback((theme) => {
+    onChange?.(theme);
   }, [onChange]);
 
-  const handleDarkClick = useCallback(() => {
-    onChange?.('dark');
-  }, [onChange]);
+  const handleMouseOver = useCallback<(theme: ThemeMode) => void>((theme) => {
+    setHoveringTheme(theme);
+  }, []);
 
-  const handleLcarsClick = useCallback(() => {
-    onChange?.('lcars');
-  }, [onChange]);
+  const handleMouseOut = useCallback(() => {
+    setHoveringTheme(null);
+  }, []);
+
+  const buttons = useMemo(() => {
+    return BUTTONS.map((button) => (
+      <Button
+        key={button.theme}
+        isSelected={theme === button.theme}
+        text={button.text}
+        theme={button.theme}
+        onClick={handleClick}
+        onMouseOver={handleMouseOver}
+      />
+    ));
+  }, [handleClick, handleMouseOver, theme]);
+
+  const hint = useMemo(() => {
+    if (hoveringTheme) {
+      return BUTTONS.find((button) => button.theme === hoveringTheme)?.hint;
+    }
+  }, [hoveringTheme]);
 
   return (
     <div className="settings-theme">
       <h2>Theme</h2>
 
-      <div className="-offset">
-        <div className="button-group">
-          <Button isSelected={theme === 'light'} onClick={handleLightClick}>Light</Button>
-          <Button isSelected={theme === 'dark'} onClick={handleDarkClick}>Dark</Button>
-          <Button isSelected={theme === 'lcars'} onClick={handleLcarsClick}>LCARS</Button>
+      <div className="-offset settings-theme-field">
+        <div className="button-group" onMouseOut={handleMouseOut}>
+          {buttons}
         </div>
+
+        {!!hint && (
+          <div className="settings-theme-hint">{hint}</div>
+        )}
       </div>
     </div>
   );

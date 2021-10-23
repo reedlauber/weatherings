@@ -17,6 +17,8 @@ const DEFAULT_WEATHER: Weather = {
   loading: true,
   low: 0,
   currentTemp: 0,
+  sunrise: 0,
+  sunset: 0,
 };
 
 const getWeatherDays = (now: Date, json: OpenWeatherOneCallResult): DayWeather[] => {
@@ -66,6 +68,9 @@ export const getRemoteWeather = (coords: GeolocationCoordinates): Promise<Weathe
   
         weather.days = getWeatherDays(now, json);
         weather.hours = getWeatherHours(now, json);
+
+        weather.sunrise = (json?.daily?.[0]?.sunrise ?? 0) * 1000;
+        weather.sunset = (json?.daily?.[0]?.sunset ?? 0) * 1000;
   
         resolve(weather);
 

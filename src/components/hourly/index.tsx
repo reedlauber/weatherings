@@ -17,7 +17,7 @@ const Hourly = React.memo<HourlyProps>(({ weather }) => {
   const hours = useMemo(() => {
     return weather.hours.filter((hour, i) => i > 0 && i < 12).map((hour) => {
       return (
-        <li className="hourly-hour">
+        <li key={hour.name} className="hourly-hour">
           <TemperatureBox>
             <strong className="hourly-hour-time">{hour.name}</strong>
             <div className="hourly-hour-temp">

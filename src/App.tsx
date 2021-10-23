@@ -24,14 +24,14 @@ function App() {
   useRequireSSL();
 
   const [settings, saveSettings] = useSavedSettings();
-
-  useTheme(settings);
   
   const [now, setNow] = useState(new Date());
 
   const [coords, coordsError] = useGeoLocation();
 
   const [weather, weatherError] = useWeather(coords);
+
+  useTheme(settings, weather);
 
   useEffect(() => {
     setNow(new Date());
