@@ -1,0 +1,46 @@
+.patterns {
+  margin: 2em 2em;
+  font-size: 1rem;
+}
+
+  .patterns-section {
+    margin-top: 2rem;
+  }
+
+  .patterns-colors {
+    display: flex;
+  }
+    .patterns-colors-list {
+      margin-right: 2em;
+    }
+
+      .patterns-color {
+        --h: 0;
+        --s: 0;
+        --l: 0;
+        --switch: calc((var(--l) - 60%) * -100);
+        margin-bottom: 0.75em;
+        padding: 1em 2em;
+        background-color: hsl(var(--h), var(--s), var(--l));
+        border-radius: 0.5em;
+        color: hsl(0, 0%, var(--switch));
+      }
+      .patterns-color.--computed {
+        background-color: var(--color);
+      }
+      .patterns-color.--text {
+        background-color: transparent;
+        color: var(--color);
+      }
+
+  .patterns-typography {
+    font-size: 1rem;
+  }
+
+    .patterns-typopgrahy-default {
+      color: var(--color-default);
+    }
+
+    .patterns-typopgrahy-title {
+      color: var(--color-title);
+    }

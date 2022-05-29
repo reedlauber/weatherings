@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { format } from 'date-fns';
 
-import { useGeoLocation } from './lib/location';
-import { useWeather } from './lib/open-weather';
-import { useRequireSSL } from './lib/ssl';
+import { useGeoLocation } from 'lib/location';
+import { useWeather } from 'lib/open-weather';
+import { useRequireSSL } from 'lib/ssl';
 
-import './App.css';
+import useSavedSettings from 'hooks/useSavedSettings';
+import useTheme from 'hooks/useTheme';
 
-import useSavedSettings from './hooks/useSavedSettings';
-import useTheme from './hooks/useTheme';
-
-import CurrentConditions from './components/current-conditions';
-import DailyHighLow from './components/daily-high-low';
-import Header from './components/header';
-import Hourly from './components/hourly';
+import CurrentConditions from 'components/current-conditions';
+import DailyHighLow from 'components/daily-high-low';
+import Header from 'components/header';
+import Hourly from 'components/hourly';
 import LastUpdated from 'components/last-updated';
-import Layout, { LayoutMain } from './components/layout';
-import Notification from './components/notification';
-import Settings from './components/settings';
-import WeeklyDays from './components/weekly-days';
+import Layout, { LayoutMain } from 'components/layout';
+import Notification from 'components/notification';
+import Settings from 'components/settings';
+import WeeklyDays from 'components/weekly-days';
+
+// import './index.css';
 
 function App() {
   useRequireSSL();
