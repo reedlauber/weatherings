@@ -1,6 +1,6 @@
 import { add } from 'date-fns';
 
-import type { DayWeather, HourWeather, Settings, ThemeMode, Weather } from 'types';
+import type { DayWeather, HourWeather, PrimaryUnits, Settings, ThemeMode, Weather } from 'types';
 
 interface StoredWeather {
   timestamp: number;
@@ -92,15 +92,18 @@ export const getSettings = (): Settings => {
 
   let showHourly = false;
   let theme: ThemeMode = 'light';
+  let primaryUnits: PrimaryUnits = 'celcius';
 
   try {
     const json = JSON.parse(storedSettings ?? '');
     showHourly = json.showHourly ?? false;
     theme = ['auto', 'dark', 'lcars', 'light'].includes(json.theme) ? json.theme : 'light';
+    primaryUnits = ['celius', 'fahrenheit'].includes(json.primaryUnits) ? json.primaryUnits : 'celcius';
   }
   catch(e) {}
 
   return {
+    primaryUnits,
     showHourly,
     theme,
   };

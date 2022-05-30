@@ -3,6 +3,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Settings, ThemeMode } from 'types';
 
 import Hourly from './components/hourly';
+import TemperatureMode from './components/temperature-mode';
 import Theme from './components/theme';
 import Toggle from './components/toggle';
 
@@ -53,6 +54,10 @@ const SettingsPanel = React.memo<SettingsProps>(({ settings, onSaveSettings }) =
     onSaveSettings?.({ showHourly });
   }, [onSaveSettings]);
 
+  const handleTemperatureModeChange = useCallback(( primaryUnits ) => {
+    onSaveSettings?.({ primaryUnits });
+  }, [onSaveSettings]);
+
   const panelClasses = isOpen ? ' --open' : '';
 
   return (
@@ -64,6 +69,7 @@ const SettingsPanel = React.memo<SettingsProps>(({ settings, onSaveSettings }) =
       <div className={`settings-panel${panelClasses}`}>
         <Theme onChange={handleThemeChange} theme={settings.theme} />
         <Hourly onChange={handleHourlyChange} showHourly={settings.showHourly} />
+        <TemperatureMode onChange={handleTemperatureModeChange} primaryUnits={settings.primaryUnits} />
       </div>
     </aside>
   );

@@ -1,36 +1,33 @@
 import React from 'react';
 
-import type { Weather } from 'types';
-
-import * as temperature from 'lib/temperature';
+import type { Settings, Weather } from 'types';
 
 import ConditionsIcon from 'components/conditions-icon';
+import Temperature from 'components/temperature';
 
 import './index.css';
 
 interface DailyHighLowProps {
+  settings: Settings;
   weather: Weather;
 }
 
-const DailyHighLow = React.memo<DailyHighLowProps>(({ weather }) => {
+const DailyHighLow = React.memo<DailyHighLowProps>(({ settings, weather }) => {
   if (!weather.loading) {
-    const fahrenheitHigh = temperature.toFahrenheit(weather.high);
-    const celciusHigh = temperature.toCelcius(weather.high);
-    const fahrenheitLow = temperature.toFahrenheit(weather.low);
-    const celciusLow = temperature.toCelcius(weather.low);
+    const secondaryFormat = settings.primaryUnits === 'fahrenheit' ? 'celcius' : 'fahrenheit';
 
     return (
       <div className="-offset --large daily-hilo">
         <ul>
           <li>
             <span>HI</span>
-            <span>{celciusHigh?.toFixed(0)}&deg;c</span>
-            <span>{fahrenheitHigh.toFixed(0)}&deg;f</span>
+            <span><Temperature value={weather.high} format={settings.primaryUnits} /></span>
+            <span><Temperature value={weather.high} format={secondaryFormat} /></span>
           </li>
           <li>
             <span>LO</span>
-            <span>{celciusLow?.toFixed(0)}&deg;c</span>
-            <span>{fahrenheitLow.toFixed(0)}&deg;f</span>
+            <span><Temperature value={weather.low} format={settings.primaryUnits} /></span>
+            <span><Temperature value={weather.low} format={secondaryFormat} /></span>
           </li>
         </ul>
 

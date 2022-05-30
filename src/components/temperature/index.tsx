@@ -1,15 +1,20 @@
 import React, { useMemo } from 'react';
 
 import * as temperature from 'lib/temperature';
+import type { PrimaryUnits } from 'types';
 
 interface TemperatureProps {
-  format?: 'celcius' | 'fahrenheit';
+  format?: PrimaryUnits;
   type?: string;
   value: number;
 }
 
 const Temperature = React.memo<TemperatureProps>(({ format = 'celcius', type, value }) => {
   const temp = useMemo(() => {
+    if ((type === 'celcius' && format === 'celcius') || (type === 'fahrenheit' && format === 'fahrenheit')) {
+      return value;
+    }
+
     if (format === 'celcius') {
       return temperature.toCelcius(value, type);
     }
@@ -21,8 +26,10 @@ const Temperature = React.memo<TemperatureProps>(({ format = 'celcius', type, va
     return 0;
   }, [format, type, value]);
 
+  const units = format === 'celcius' ? 'c' : 'f';
+
   return (
-    <span>{temp?.toFixed(0)}&deg;c</span>
+    <span>{temp?.toFixed(0)}&deg;{units}</span>
   );
 });
 

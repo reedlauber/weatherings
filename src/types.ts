@@ -1,4 +1,7 @@
+export type PrimaryUnits = 'fahrenheit' | 'celcius';
+
 export interface Settings {
+  primaryUnits?: PrimaryUnits;
   showHourly: boolean;
   theme: ThemeMode;
 }

@@ -1,27 +1,31 @@
 import React from 'react';
 
-import type { Weather } from 'types';
+import type { Settings, Weather } from 'types';
 
-import * as temperature from 'lib/temperature';
+import Temperature from 'components/temperature';
 
 import './index.css';
 
 interface CurrentConditionsProps {
+  settings: Settings;
   weather: Weather;
 }
 
-const CurrentConditions = React.memo<CurrentConditionsProps>(({ weather }) => {
-  const celciusTemp = temperature.toCelcius(weather?.currentTemp);
-  const fahrenheitTemp = temperature.toFahrenheit(weather?.currentTemp);
+const CurrentConditions = React.memo<CurrentConditionsProps>(({ settings, weather }) => {
+  const secondaryFormat = settings.primaryUnits === 'fahrenheit' ? 'celcius' : 'fahrenheit';
 
   return (
     <section className="daily-degs">
       <main className="deg-main">
-        <strong className="deg-major">{celciusTemp?.toFixed(0)}&deg;c</strong>
+        <strong className="deg-major">
+          <Temperature format={settings.primaryUnits} value={weather.currentTemp} />
+        </strong>
       </main>
 
       <aside className="deg-aside">
-        <span className="deg-minor">{fahrenheitTemp.toFixed(0)}&deg;f</span>
+        <span className="deg-minor">
+          <Temperature format={secondaryFormat} value={weather.currentTemp} />
+        </span>
       </aside>
     </section>
   );

@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 
-import type { DayWeather } from 'types';
+import type { DayWeather, Settings } from 'types';
 
 import { toKelvin } from 'lib/temperature';
 
@@ -9,6 +9,7 @@ import TemperatureBox from 'components/temperature-box';
 
 interface WeeklyDayProps {
   day: DayWeather;
+  settings: Settings;
 }
 
 const KELVIN_MIN = toKelvin(-5);
@@ -16,7 +17,7 @@ const KELVIN_MAX = toKelvin(115);
 const KELVIN_SIZE = Math.abs(KELVIN_MAX - KELVIN_MIN);
 const HEIGHT = 16 * 5;
 
-const WeeklyDay = React.memo<WeeklyDayProps>(({ day }) => {
+const WeeklyDay = React.memo<WeeklyDayProps>(({ day, settings }) => {
   const styles = useMemo(() => {
     const tempSize = day.high - day.low;
     const relativeSize = tempSize / KELVIN_SIZE;
@@ -39,12 +40,12 @@ const WeeklyDay = React.memo<WeeklyDayProps>(({ day }) => {
 
         <div className="weekly-day-temperature">
           <span>HI</span>
-          <Temperature value={day.high} />
+          <Temperature format={settings.primaryUnits} value={day.high} />
         </div>
 
         <div className="weekly-day-temperature">
           <span>LO</span>
-          <Temperature value={day.low} />
+          <Temperature format={settings.primaryUnits} value={day.low} />
         </div>
       </TemperatureBox>
     </li>

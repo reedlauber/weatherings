@@ -59,14 +59,14 @@ function App() {
         {!weather.loading && !coordsError && !weatherError && (
           <>
             <div className="-offset --xlarge daily">
-              <CurrentConditions weather={weather} />
+              <CurrentConditions settings={settings} weather={weather} />
               <LastUpdated weather={weather} />
-              <DailyHighLow weather={weather} />
+              <DailyHighLow settings={settings} weather={weather} />
             </div>
 
-            {settings.showHourly && <Hourly weather={weather} />}
+            {settings.showHourly && <Hourly settings={settings} weather={weather} />}
 
-            <WeeklyDays weather={weather} />
+            <WeeklyDays settings={settings} weather={weather} />
           </>
         )}
       </LayoutMain>
