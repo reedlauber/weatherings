@@ -5,7 +5,7 @@ import type { DayWeather, HourWeather, OpenWeatherOneCallResult, Weather } from 
 
 import { getRecentWeather, setRecentWeather } from './local';
 
-const BASE_PATH = 'https://api.openweathermap.org/data/2.5/onecall?exclude=minutely';
+const BASE_PATH = 'https://api.openweathermap.org/data/3.0/onecall?exclude=minutely';
 const WEATHER_API_URL = `${BASE_PATH}&appid=${process.env.REACT_APP_OPEN_WEATHER_API_KEY}`;
 const hasAPIKey = !!process.env.REACT_APP_OPEN_WEATHER_API_KEY;
 
